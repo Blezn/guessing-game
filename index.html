@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guesser</title>
+</head>
+
+<body>
+    <button id="play">Play</button>
+
+
+    <!-- <script src="./guess.js"></script> -->
+    <script>
+        const playButton = document.getElementById('play');
+
+        playButton.addEventListener("click", () => {
+            const playerName = prompt("Please enter username");
+            let point = 0;
+            const guessingGame = (range) => {
+                const rndGuess = Math.floor(Math.random() * range) + 1;
+                console.log(rndGuess);
+                const guess = prompt(`Predict a number between 1 and ${range}`);
+                const playerGuess = Number(guess);
+
+                if (rndGuess === playerGuess) {
+                    point = point + 1;
+                    alert(`You won!, ${playerName}, You've scored ${point} point`);
+                    guessingGame(range + 1);
+                } else {
+                    point = 0;
+                    alert("You lose!");
+                }
+            };
+            guessingGame(2);
+        })
+    </script>
+</body>
+
+</html>
